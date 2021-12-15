@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CraftersCreations.Data;
 
 namespace CraftersCreations
 {
@@ -24,6 +25,9 @@ namespace CraftersCreations
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddEntityFrameworkMySql();
+            services.AddSingleton<ConnectionString>(new ConnectionString(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<CraftDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

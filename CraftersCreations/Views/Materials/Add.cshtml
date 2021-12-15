@@ -1,0 +1,13 @@
+﻿
+@model AddMaterialViewModel
+
+<h1>Add New Material</h1>
+
+<form asp-controller="MaterialsController" asp-action="ProcessAddMaterialForm" method="post">
+    <div class="form-group">
+        <label>Materials</label>
+        <input asp-for="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <input type="submit" value="Submit" />
+</form>

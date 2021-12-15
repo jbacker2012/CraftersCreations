@@ -11,5 +11,14 @@ namespace CraftersCreations.Models
         public string Name { get; set; }
         public Catagory Catagory { get; set; }
      
-    }
+        public Materials()
+        {            
+        }
+
+        public Materials(string name)
+        {
+            Name = name;
+            
+        }
+    }  
 }
