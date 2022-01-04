@@ -1,0 +1,15 @@
+﻿@model AddProjectsViewModel
+
+<h1>Add New Project</h1>
+
+<form asp-controller="ProjectsController" asp-action="ProcessAddProjectsForm" method="post">
+    <div class="form-group">
+        <label>Projects</label>
+        <input asp-for="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+
+
+    <input type="submit" value="Submit" />
+</form>

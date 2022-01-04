@@ -10,5 +10,16 @@ namespace CraftersCreations.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public Catagory Catagory { get; set; }
+
+        public Projects()
+        {
+        }
+
+        public Projects(string name)
+        {
+            Name = name;
+
+        }
     }
 }
+
