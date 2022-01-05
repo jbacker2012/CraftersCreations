@@ -9,17 +9,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CraftersCreations.ViewModels
 {
-    public class AddMaterialViewModel
+    public class AddCraftTypeViewModel
     {
         [Required(ErrorMessage = "Name is required.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters")]
         public string Name { get; set; }
        
-        [Range(1, int.MaxValue, ErrorMessage = "Craft Type is required")]
-        public int CraftTypeID { get; set; }
-        public IList<SelectListItem> CraftTypeOptions { get; set;}
-       
-        
-
+        public IList<SelectListItem> CraftTypeOptions { get; set; }
     }
 }

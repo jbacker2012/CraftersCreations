@@ -1,0 +1,25 @@
+﻿@model List<CraftersCreations.Models.CraftType>
+
+<h1>Crafting Types</h1>
+
+<p><a asp-controller="CraftType" asp-action="Add">Add a new craft type</a></p>
+
+@if (Model.Count == 0)
+{
+    <p>No Projects are currently listed</p>
+}
+else
+{
+    <div>
+        <ul>
+            @foreach (CraftType craftTypes in Model)
+            {
+                <li>
+                    <a asp-controller="CraftType" asp-action="About" asp-route-id="@craftTypes.Id">@craftTypes.Name</a>
+                </li>
+            }
+        </ul>
+
+    </div>
+    <a asp-controller="Materials" asp-action="Add">Back to add materials</a>
+}

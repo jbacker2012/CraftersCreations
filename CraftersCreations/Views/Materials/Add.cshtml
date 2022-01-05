@@ -3,14 +3,21 @@
 
 <h1>Add New Material</h1>
 
-<form asp-controller="MaterialsController" asp-action="ProcessAddMaterialForm" method="post">
+<form asp-controller="Materials" asp-action="ProcessAddMaterialForm" method="post">
     <div class="form-group">
-        <label>Materials</label>
+        <label>Item Name</label>
         <input asp-for="@Model.Name" />
         <span asp-validation-for="Name"></span>
     </div>
-    
-    
-    
     <input type="submit" value="Add new item" />
+    <br />
+    <div class="form-group">
+        
+        <select id="drpTypeList" class="form-control" asp-for="@Model.CraftTypeID" asp-items="@Model.CraftTypeOptions">
+            <option value="">--Select--</option>
+        </select>       
+        <span asp-validation-for="CraftTypeID"></span>
+        <a asp-controller="CraftType" asp-action="Add">Add New Crafting Type</a>
+    </div>
+    <input type="submit" value="Add new type" />
 </form>

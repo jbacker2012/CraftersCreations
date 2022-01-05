@@ -1,0 +1,13 @@
+﻿@model AddCraftTypeViewModel
+
+<h1>Add New Crafting Types</h1>
+
+<form asp-controller="CraftType" asp-action="ProcessAddCraftTypeForm" method="post">
+    <div class="form-group">
+        <label>Crafting Types</label>
+        <input asp-for="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <a asp-controller="Materials" asp-action="Add">Cancel</a>
+    <input type="submit" value="Submit" />
+</form> 

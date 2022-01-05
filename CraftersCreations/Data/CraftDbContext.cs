@@ -16,6 +16,7 @@ namespace CraftersCreations.Data
         public DbSet<Materials> Materials { get; set; }
         public DbSet<Projects> Projects { get; set; }
         public DbSet<Catagory> Catagory { get; set; }
+        public DbSet<CraftType> CraftType { get; set; }
         public ConnectionString ConnectionString { get; set; }
 
         public CraftDbContext(ConnectionString connectionString)

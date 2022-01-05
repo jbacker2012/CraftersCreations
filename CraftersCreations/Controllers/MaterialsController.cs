@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CraftersCreations.Data;
 using CraftersCreations.Models;
 using CraftersCreations.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CraftersCreations.Controllers
 {
@@ -25,9 +26,14 @@ namespace CraftersCreations.Controllers
             return View(events);
         }
 
+        [HttpGet("/Add")]
         public IActionResult Add()
         {
-            return View(new AddMaterialViewModel());
+            List<CraftType> craftTypes = context.CraftType.ToList();
+
+            AddMaterialViewModel materialViewModel = new AddMaterialViewModel();
+            materialViewModel.CraftTypeOptions = craftTypes.Select(craftType => new SelectListItem(craftType.Name, craftType.Id.ToString())).ToList();
+            return View(materialViewModel);
         }
 
         public IActionResult ProcessAddMaterialForm(AddMaterialViewModel viewModel)
@@ -40,7 +46,7 @@ namespace CraftersCreations.Controllers
                 context.Add(material);
                 context.SaveChanges();
 
-                return Redirect("/Material/");
+                return Redirect("/Materials/");
             }
 
             return View("Add", viewModel);
