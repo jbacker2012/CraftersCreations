@@ -26,7 +26,6 @@ namespace CraftersCreations.Controllers
             return View(events);
         }
 
-        [HttpGet("/Add")]
         public IActionResult Add()
         {
             List<CraftType> craftTypes = context.CraftType.ToList();

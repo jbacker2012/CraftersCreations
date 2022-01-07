@@ -2,14 +2,20 @@
 
 <h1>Add New Project</h1>
 
-<form asp-controller="ProjectsController" asp-action="ProcessAddProjectsForm" method="post">
+<form asp-controller="Projects" asp-action="ProcessAddProjectsForm" method="post">
     <div class="form-group">
         <label>Projects</label>
         <input asp-for="@Model.Name" />
         <span asp-validation-for="Name"></span>
     </div>
-
-
-
     <input type="submit" value="Submit" />
+
+    <br />
+    <div class="form-group">
+        <select id="drpCatList" class="form-control" asp-for="@Model.CatagoryID" asp-items="@Model.CatagoryOptions">
+            <option value="">--Select--</option>
+        </select>
+        <span asp-validation-for="CatagoryID"></span>
+        <a asp-controller="Catagory" asp-action="Add">Add New Catagory</a>
+    </div>
 </form>

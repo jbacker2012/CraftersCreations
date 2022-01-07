@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CraftersCreations.Data;
 using CraftersCreations.Models;
 using CraftersCreations.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CraftersCreations.Controllers
 {
@@ -27,7 +28,11 @@ namespace CraftersCreations.Controllers
 
         public IActionResult Add()
         {
-            return View(new AddProjectsViewModel());
+            List<Catagory> catagory = context.Catagory.ToList();
+
+            AddProjectsViewModel projectsViewModel = new AddProjectsViewModel();
+            projectsViewModel.CatagoryOptions = catagory.Select(catagory => new SelectListItem(catagory.Name, catagory.Id.ToString())).ToList();
+            return View(projectsViewModel);
         }
 
         public IActionResult ProcessAddProjectsForm(AddProjectsViewModel viewModel)

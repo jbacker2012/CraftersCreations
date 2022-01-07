@@ -9,6 +9,15 @@ namespace CraftersCreations.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-    }
 
+        public Catagory()
+        {
+        }
+
+        public Catagory(string name)
+        {
+            Name = name;
+
+        }
+    }
 }

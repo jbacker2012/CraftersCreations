@@ -1,0 +1,25 @@
+﻿@model List<CraftersCreations.Models.Catagory>
+
+<h1>Catagories</h1>
+
+<p><a asp-controller="Catagory" asp-action="Add">Add a new catagory</a></p>
+
+@if (Model.Count == 0)
+{
+    <p>No Catagories are currently listed</p>
+}
+else
+{
+    <div>
+        <ul>
+            @foreach (Catagory catagory in Model)
+            {
+                <li>
+                    <a asp-controller="Catagory" asp-action="About" asp-route-id="@catagory.Id">@catagory.Name</a>
+                </li>
+            }
+        </ul>
+
+    </div>
+    <a asp-controller="Projects" asp-action="Add">Back to add projects</a>
+}

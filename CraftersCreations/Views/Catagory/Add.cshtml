@@ -1,0 +1,13 @@
+﻿@model AddCatagoryViewModel
+
+<h1>Add New Catagories</h1>
+
+<form asp-controller="Catagory" asp-action="ProcessAddCatagoryForm" method="post">
+    <div class="form-group">
+        <label>Catagory</label>
+        <input asp-for="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <a asp-controller="Catagory" asp-action="Add">Cancel</a>
+    <input type="submit" value="Submit" />
+</form> 
