@@ -1,21 +1,22 @@
 ﻿
 @model AddMaterialViewModel
 
-<h1>Add New Material</h1>
+<h1>Add New Item</h1>
 
 <form asp-controller="Materials" asp-action="ProcessAddMaterialForm" method="post">
     <div class="form-group">
-        <label>Item Name</label>
+        <label>Item </label>
         <input asp-for="@Model.Name" />
         <span asp-validation-for="Name"></span>
     </div>
-    <input type="submit" value="Add new item" />
-    <br />
+    <input type="submit" value="Submit" />
+    
     <div class="form-group">
+        <br />
         <select id="drpTypeList" class="form-control" asp-for="@Model.CraftTypeID" asp-items="@Model.CraftTypeOptions">
             <option value="">--Select--</option>
         </select>       
         <span asp-validation-for="CraftTypeID"></span>
-        <a asp-controller="CraftType" asp-action="Add">Add New Crafting Type</a>
+        <a asp-controller="CraftType" asp-action="Add">Add new craft type</a>
     </div>    
 </form>
