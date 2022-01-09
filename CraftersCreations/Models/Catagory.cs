@@ -9,6 +9,7 @@ namespace CraftersCreations.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<Projects> Projects { get; set; }
 
         public Catagory()
         {

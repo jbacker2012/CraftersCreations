@@ -1,5 +1,5 @@
 ﻿
-@model List<CraftersCreations.Models.Projects>
+@model List<CraftersCreations.Models.Catagory>
 
 <h1>Project Inventory</h1>
 
@@ -11,15 +11,23 @@
 }
 else
 {
-    <div>
-        <ul>
-            @foreach (Projects projects in Model)
-            {
-                <li>
-                    <a asp-controller="Projects" asp-action="About" asp-route-id="@projects.Id">@projects.Name</a>
-                </li>
-            }
-        </ul>
+<div>
+    <ul>
+        @foreach (Catagory catagory in Model)
+        {
+            <li>
+                @catagory.Name
+                <ul>
+                    @foreach (Projects projects in catagory.Projects)
+                    {
+                        <li>
+                            @projects.Name
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
 
-    </div>
+</div>
 }

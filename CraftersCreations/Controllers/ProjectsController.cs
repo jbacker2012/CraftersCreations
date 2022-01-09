@@ -7,6 +7,7 @@ using CraftersCreations.Data;
 using CraftersCreations.Models;
 using CraftersCreations.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace CraftersCreations.Controllers
 {
@@ -21,7 +22,7 @@ namespace CraftersCreations.Controllers
 
         public IActionResult Index()
         {
-            List<Projects> events = context.Projects.ToList();
+            List<Catagory> events = context.Catagory.Include(e => e.Projects).OrderBy(e => e.Name).ToList();
 
             return View(events);
         }
@@ -37,10 +38,14 @@ namespace CraftersCreations.Controllers
 
         public IActionResult ProcessAddProjectsForm(AddProjectsViewModel viewModel)
         {
+            List<Catagory> catagory = context.Catagory.ToList();
+            viewModel.CatagoryOptions = catagory.Select(catagory => new SelectListItem(catagory.Name, catagory.Id.ToString())).ToList();
+
             if (ModelState.IsValid)
             {
+                
                 Projects projects = new Projects(viewModel.Name);
-
+                projects.CatagoryId = viewModel.CatagoryID;
 
                 context.Add(projects);
                 context.SaveChanges();

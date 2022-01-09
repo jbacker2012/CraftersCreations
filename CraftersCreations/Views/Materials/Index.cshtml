@@ -1,5 +1,5 @@
 ﻿
-@model List<CraftersCreations.Models.Materials>
+@model List<CraftersCreations.Models.CraftType>
 
 <h1>Material Inventory</h1>
 
@@ -13,11 +13,21 @@ else
 {
     <div>
         <ul>
-            @foreach (Materials materials in Model)
+            @foreach (CraftType craftType in Model)
             {
                 <li>
-                    <a asp-controller="Materials" asp-action="About" asp-route-id="@materials.Id">@materials.Name</a>
+                    @craftType.Name
+                    <ul>
+                        @foreach (Materials materials in craftType.Materials)
+                    {
+                        <li>
+                            @materials.Name
+                        </li>
+                    }
+                    </ul>
                 </li>
+               
+             
             }
         </ul>
 

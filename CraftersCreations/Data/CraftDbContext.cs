@@ -30,6 +30,16 @@ namespace CraftersCreations.Data
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Materials>().Property(e => e.CraftTypeId).IsRequired();
+            modelBuilder.Entity<Materials>().Property(e => e.Name).IsRequired();
+            modelBuilder.Entity<Projects>().Property(e => e.CatagoryId).IsRequired();
+            modelBuilder.Entity<Projects>().Property(e => e.Name).IsRequired();
+            modelBuilder.Entity<CraftType>().Property(e => e.Name).IsRequired();
+            modelBuilder.Entity<Catagory>().Property(e => e.Name).IsRequired();
+        } 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

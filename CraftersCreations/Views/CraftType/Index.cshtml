@@ -15,7 +15,7 @@ else
             @foreach (CraftType craftTypes in Model)
             {
                 <li>
-                    <a asp-controller="CraftType" asp-action="About" asp-route-id="@craftTypes.Id">@craftTypes.Name</a>
+                    @craftTypes.Name
                 </li>
             }
         </ul>

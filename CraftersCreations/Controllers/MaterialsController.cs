@@ -7,6 +7,7 @@ using CraftersCreations.Data;
 using CraftersCreations.Models;
 using CraftersCreations.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace CraftersCreations.Controllers
 {
@@ -21,7 +22,7 @@ namespace CraftersCreations.Controllers
 
         public IActionResult Index()
         {
-            List<Materials> events = context.Materials.ToList();
+            List<CraftType> events = context.CraftType.Include(e => e.Materials).OrderBy(e => e.Name).ToList();
 
             return View(events);
         }
@@ -37,9 +38,13 @@ namespace CraftersCreations.Controllers
 
         public IActionResult ProcessAddMaterialForm(AddMaterialViewModel viewModel)
         {
+            List<CraftType> craftTypes = context.CraftType.ToList();
+            viewModel.CraftTypeOptions = craftTypes.Select(craftType => new SelectListItem(craftType.Name, craftType.Id.ToString())).ToList();
+
             if (ModelState.IsValid)
             {
                 Materials material = new Materials(viewModel.Name);
+                material.CraftTypeId = viewModel.CraftTypeID; 
 
 
                 context.Add(material);
