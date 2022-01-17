@@ -8,6 +8,7 @@ using CraftersCreations.Models;
 using CraftersCreations.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CraftersCreations.Controllers
 {

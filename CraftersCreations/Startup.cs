@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CraftersCreations.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace CraftersCreations
 {
@@ -24,10 +26,14 @@ namespace CraftersCreations
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(o => o.Filters.Add(new AuthorizeFilter()));
             services.AddControllersWithViews();
             services.AddEntityFrameworkMySql();
             services.AddSingleton<ConnectionString>(new ConnectionString(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<CraftDbContext>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +54,7 @@ namespace CraftersCreations
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
