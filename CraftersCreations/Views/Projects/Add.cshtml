@@ -13,7 +13,7 @@
     <div class="form-group">
         <br />
         <select id="drpCatList" class="form-control" asp-for="@Model.CatagoryID" asp-items="@Model.CatagoryOptions">
-            <option value="">--Select--</option>
+            <option value= "">--Select--</option>
         </select>
         <span asp-validation-for="CatagoryID"></span>
         <a asp-controller="Catagory" asp-action="Add">Add new catagory</a>

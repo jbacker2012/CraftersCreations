@@ -4,11 +4,15 @@
 
 
 
-<div class="text-center">
+<div class="text-center bg-image img-fluid" style="background-image: url('CraftersCreations\wwwroot\Images\rainbow background.jpg') ">
     <h1 class="display-4">Crafter's Creations</h1>
-    <p><a asp-controller="Materials" asp-action="Index">Inventory</a></p>
-    <p><a asp-controller="Projects" asp-action="Index">Projects</a></p>
+    <p><a asp-controller="Materials" asp-action="Index" class="btn btn-info" role="button">Inventory</a></p>
+    <p><a asp-controller="Projects" asp-action="Index" class="btn btn-warning" role="button">Projects</a></p>
     @*<p><a asp-controller="Search" asp-action="Index">Search </a></p>*@
 </div>
 
+
+@*<div class="bg-image">
+    <p> <a class="bg-image img-fluid" style="background-image: url('Images/craftbackground.jpg'); height:500vh"></a></p>
+</div>*@
 

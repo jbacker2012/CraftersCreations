@@ -9,14 +9,15 @@
         <input asp-for="@Model.Name" />
         <span asp-validation-for="Name"></span>
     </div>
-    <input type="submit" value="Submit" />
+    <button role="button" class="btn btn-secondary">Submit</button>
     
+     
     <div class="form-group">
         <br />
         <select id="drpTypeList" class="form-control" asp-for="@Model.CraftTypeID" asp-items="@Model.CraftTypeOptions">
-            <option value="">--Select--</option>
+            <option value="CraftTypeOptions">--Select--</option>
         </select>       
         <span asp-validation-for="CraftTypeID"></span>
-        <a asp-controller="CraftType" asp-action="Add">Add new craft type</a>
-    </div>    
+        <a asp-controller="CraftType" asp-action="Add" class="btn btn-info" role="button">Add new craft type</a>     
+    </div>  
 </form>

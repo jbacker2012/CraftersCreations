@@ -12,10 +12,10 @@
 else
 {
     <div>
-        <ul>
+        <ul class="list-group">
             @foreach (CraftType craftType in Model)
             {
-                <li>
+                <li class=" text-dark list-group-item list-group-item-info">
                     @craftType.Name
                     <ul>
                         @foreach (Materials materials in craftType.Materials)

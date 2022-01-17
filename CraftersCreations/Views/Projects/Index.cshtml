@@ -15,7 +15,7 @@ else
     <ul>
         @foreach (Catagory catagory in Model)
         {
-            <li>
+            <li class=" text-dark list-group-item list-group-item-warning">
                 @catagory.Name
                 <ul>
                     @foreach (Projects projects in catagory.Projects)
