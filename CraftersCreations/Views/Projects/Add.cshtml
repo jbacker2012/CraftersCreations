@@ -8,7 +8,7 @@
         <input asp-for="@Model.Name" />
         <span asp-validation-for="Name"></span>
     </div>
-    <input type="submit" value="Submit" />
+    <button role="button" class="btn btn-secondary">Submit</button>
 
     <div class="form-group">
         <br />
@@ -16,6 +16,6 @@
             <option value= "">--Select--</option>
         </select>
         <span asp-validation-for="CatagoryID"></span>
-        <a asp-controller="Catagory" asp-action="Add">Add new catagory</a>
+        <a asp-controller="Catagory" asp-action="Add" class="btn btn-warning" role="button">Add new catagory</a>
     </div>
 </form>

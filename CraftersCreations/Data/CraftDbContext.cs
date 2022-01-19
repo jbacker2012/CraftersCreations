@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CraftersCreations.Data
 {
-    public class CraftDbContext : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
+    public class CraftDbContext : DbContext
     {
         public CraftDbContext()
         {
@@ -19,6 +19,7 @@ namespace CraftersCreations.Data
         public DbSet<Projects> Projects { get; set; }
         public DbSet<Catagory> Catagory { get; set; }
         public DbSet<CraftType> CraftType { get; set; }
+        public DbSet<User> User { get; set; }
         public ConnectionString ConnectionString { get; set; }
 
         public CraftDbContext(ConnectionString connectionString)

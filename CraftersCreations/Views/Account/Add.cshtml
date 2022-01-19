@@ -1,0 +1,18 @@
+﻿@model AddAccountViewModel
+
+<h1> Add New User</h1>
+
+<form asp-controller="Account" asp-action="ProcessAddUserForm" method="post">
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="@Model.Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <input type="submit" value="Submit" />
+    <a asp-controller="Account" asp-action="Index" class="btn btn-danger" role="button">Cancel</a>
+</form>

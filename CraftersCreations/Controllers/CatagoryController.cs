@@ -48,11 +48,6 @@ namespace CraftersCreations.Controllers
 
             return View("Add", viewModel);
         }
-        public IActionResult About(int id)
-        {
-            Catagory catagory = context.Catagory.First(c => c.Id == id);
-            ViewBag.Catagory = catagory;
-            return View();
-        }
+   
     }
 }

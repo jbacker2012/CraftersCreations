@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using CraftersCreations.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using CraftersCreations.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.EntityFrameworkCore;
 
 namespace CraftersCreations
 {
@@ -31,9 +34,25 @@ namespace CraftersCreations
             services.AddEntityFrameworkMySql();
             services.AddSingleton<ConnectionString>(new ConnectionString(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<CraftDbContext>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+            //services.AddDbContext<CraftDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+            //        assembly => assembly.MigrationsAssembly(typeof(CraftDbContext).Assembly.FullName)));
+
+
+            services.AddAuthentication(o => {
+                o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                //o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+            })
+                .AddCookie()
+                .AddCookie(ExternalAuthenticationDefaults.AuthenticationScheme)
+                .AddGoogle(o =>
+                {
+                    o.SignInScheme = ExternalAuthenticationDefaults.AuthenticationScheme;
+                    o.ClientId = Configuration["Google:ClientId"];
+                    o.ClientSecret = Configuration["Google:ClientSecret"];
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
