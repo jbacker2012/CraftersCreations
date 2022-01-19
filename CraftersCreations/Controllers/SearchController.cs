@@ -1,5 +1,6 @@
 ﻿using CraftersCreations.Data;
 using CraftersCreations.Models;
+using CraftersCreations.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,25 +23,47 @@ namespace CraftersCreations.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.columns = ListController.ColumnChoices;
             return View();
         }
 
-        //public IActionResult (string searchType, string searchTerm)
-        //{
-        //    List<Materials> materials;
-        //    List<CraftType> displayCraft = new List<CraftType>();
-           
+        public IActionResult Results(string searchType, string searchTerm)
+        {
+            ViewBag.searchType = searchType;
+            ViewBag.columns = ListController.ColumnChoices;
+            if (searchType == "project")
+            {
+                List<Projects> projects;
+                if (string.IsNullOrEmpty(searchTerm))
+                {
+                    projects = context.Projects
+                        .Include(m => m.Catagory)
+                        .ToList();
+                }
+                else
+                {
+                    projects = context.Projects.Include(m => m.Catagory).Where(m => m.Name.Contains(searchTerm)).ToList();
+                }
+                ViewBag.projects = projects;
+            }
+            else
+            {
+                List<Materials> materials;
+                if (string.IsNullOrEmpty(searchTerm))
+                {
+                    materials = context.Materials
+                        .Include(m => m.CraftType)
+                        .ToList();
+                }
+                else
+                {
+                    materials = context.Materials.Include(m => m.CraftType).Where(m => m.Name.Contains(searchTerm)).ToList();
+                }
+                ViewBag.materials = materials;
+            }
 
-        //    if (string.IsNullOrEmpty(searchTerm))
-        //    {
-        //        materials = context.Materials
-        //            .Include(m => m.CraftType)
-        //            .ToList();
-                
-        //    }
-
-        //    return View();
-        //}
+            return View("Index");
+        }
     }
 }
     

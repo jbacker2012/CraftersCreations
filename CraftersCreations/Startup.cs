@@ -36,14 +36,8 @@ namespace CraftersCreations
             services.AddTransient<CraftDbContext>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            //services.AddDbContext<CraftDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-            //        assembly => assembly.MigrationsAssembly(typeof(CraftDbContext).Assembly.FullName)));
-
-
             services.AddAuthentication(o => {
                 o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                //o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
             })
                 .AddCookie()
                 .AddCookie(ExternalAuthenticationDefaults.AuthenticationScheme)
