@@ -7,8 +7,8 @@
         <label>Catagory</label>
         <input asp-for="@Model.Name" />
         <span asp-validation-for="Name"></span>
-        <a asp-controller="Catagory" asp-action="Add" class="btn btn-danger" role="button">Cancel</a>
     </div>
-   
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="Submit" class="btn btn-secondary" role="button" />
+    <a asp-controller="Catagory" asp-action="Add" class="btn btn-danger" role="button">Cancel</a>
+
 </form> 

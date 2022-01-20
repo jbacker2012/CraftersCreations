@@ -2,21 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
+@*<div class="bg-image img-fluid container">*@
+    @*<img src="/Images/rainbow background.jpg"  alt="Responsive image">*@
+    
 
+        <div class="text-center">
+            <h1 class="display-4 border border-dark border-4">Crafter's Creations</h1>
+            @*<img src="/Images/rainbow background.jpg" class="bg-image img-fluid" alt="Responsive image">*@
+            <p><a asp-controller="Materials" asp-action="Index" class="btn btn-info" role="button">Inventory</a></p>
+            <p><a asp-controller="Projects" asp-action="Index" class="btn btn-warning" role="button">Projects</a></p>
+            <p><a asp-controller="Search" asp-action="Index" class="btn btn-secondary" role="button">Search </a></p>
+            <p><a asp-controller="Account" asp-action="Index" class="btn btn-primary" role="button">Users </a></p>
+        </div>
+    
 
-<div class="text-center">
-    <h1 class="display-4 border border-dark border-4">Crafter's Creations</h1>
-    <span class="border border-dark border-4"></span>
-    <p><a asp-controller="Materials" asp-action="Index" class="btn btn-info" role="button">Inventory</a></p>
-    <p><a asp-controller="Projects" asp-action="Index" class="btn btn-warning" role="button">Projects</a></p>
-    <p><a asp-controller="Search" asp-action="Index" class="btn btn-secondary" role="button">Search </a></p>
-    <p><a asp-controller="Account" asp-action="Index" class="btn btn-secondary" role="button">Users </a></p>
-</div>
+@*</div>*@
 
-
-@*<div class="bg-image">
-        <p> <a class="bg-image img-fluid" style="background-image: url('Images/craftbackground.jpg'); height:500vh"></a></p>
-    </div>*@
 @*<div class="bg-image">
     <p> <a class="bg-image img-fluid" style="background-image: url('Images\splash.png'); height: 500vh"></a></p>
 </div>*@

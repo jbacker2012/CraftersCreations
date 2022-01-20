@@ -10,7 +10,7 @@
             @foreach (var column in ViewBag.columns)
             {
                 <span>
-                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@(column.Key == ViewBag.searchType)" />
+                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@(column.Key == ViewBag.searchType)"/>
                     <label for="@column.Key">@column.Value</label>
                 </span>
             }
@@ -22,7 +22,7 @@
             <input type="text" name="searchTerm" id="searchTerm" />
         </p>
 
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search" class="btn btn-secondary" role="button" />
     </form>
 
     <hr />
@@ -34,8 +34,8 @@
             {
                 <tr>
                     <td>
-                        <p>Name: @materials.Name</p>
-                        <p>Craft Type: @materials.CraftType.Name</p>
+                        <p class=" text-dark list-group-item list-group-item-info">Name: @materials.Name</p>
+                        <p class=" text-dark list-group-item list-group-item-info">Craft Type: @materials.CraftType.Name</p>
 
                     </td>
                 </tr>
@@ -50,8 +50,8 @@
             {
                 <tr>
                     <td>
-                        <p>Name: @projects.Name</p>
-                        <p>Catagory: @projects.Catagory.Name</p>
+                        <p class="text-dark list-group-item list-group-item-warning">Name: @projects.Name</p>
+                        <p class="text-dark list-group-item list-group-item-warning">Catagory: @projects.Catagory.Name</p>
 
                     </td>
                 </tr>
